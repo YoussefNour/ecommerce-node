@@ -1,18 +1,25 @@
-const { MongoClient } = require("mongodb");
-const debug = require("debug")("dbConfig");
+const mongoose = require("mongoose");
+const debug = require("debug")("app:dbConfig");
 require("dotenv").config();
 
-const myMongoDb = async () => {
-  const url = process.env.DBURI;
-  const dbName = process.env.DBNAME;
-  let client, db;
+let db;
+(() => {
+  const uri = `mongodb+srv://dba:${process.env.DBPASS}@eshopper.nhrxx.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
   try {
-    client = await MongoClient.connect(url);
-    db = client.db(dbName);
+    mongoose
+      .connect(uri, {
+        useNewUrlParser: true,
+      })
+      .then(() => {
+        debug("connected to database");
+      })
+      .catch((error) => {
+        debug(error);
+      });
+    db = mongoose.connection;
   } catch (error) {
     debug(error);
   }
-  return { db, close: client.close };
-};
+})();
 
-module.exports = myMongoDb();
+module.exports = db;
