@@ -12,7 +12,13 @@ const port = process.env.port || 3000;
 
 app.set("views", "./src/views");
 app.set("view engine", "ejs");
-app.use(morgan("tiny"));
+app.use(
+  morgan("tiny", {
+    skip: (req) => {
+      return req.originalUrl.includes("public");
+    },
+  })
+);
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
