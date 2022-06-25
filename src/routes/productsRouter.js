@@ -6,7 +6,7 @@ const productsRouter = express.Router();
 
 productsRouter.route("/").get(async (req, res) => {
   let products = await db.collection("products").find().toArray();
-  res.json(products);
+  res.render("products", { products });
 });
 
 module.exports = productsRouter;
