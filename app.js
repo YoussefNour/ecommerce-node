@@ -6,6 +6,7 @@ const chalk = require("chalk");
 const path = require("path");
 require("dotenv").config();
 const mainRouter = require("./src/routes/mainRouter");
+const adminRouter = require("./src/routes/adminRouter");
 const productsRouter = require("./src/routes/productsRouter");
 
 const app = express();
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // routes
 app.use(mainRouter);
+app.use("/admin", adminRouter);
 app.use("/products", productsRouter);
 
 app.listen(port, () => {

@@ -7,7 +7,7 @@ const productsRouter = express.Router();
 productsRouter.route("/").get(async (req, res) => {
   try {
     const products = await productService.getAllProducts();
-    debug(products);
+    // debug(products);
     res.render("products", { products });
   } catch (error) {
     debug(error);

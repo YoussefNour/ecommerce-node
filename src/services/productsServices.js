@@ -15,7 +15,7 @@ async function getAllProducts() {
       .collection("products")
       .find()
       .toArray();
-    debug(products);
+    // debug(products);
     return products;
   } catch (error) {
     debug(error);
