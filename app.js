@@ -12,7 +12,7 @@ const productsRouter = require("./src/routes/productsRouter");
 const app = express();
 const port = process.env.port || 52511;
 
-mongoose.connect(`mongodb+srv://${process.env.DBUSER}:${process.env.DBPASS}@Eshopper.nhrxx.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`, { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://dba:yyIhvGNgjIvzRPb9@Eshopper.nhrxx.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
