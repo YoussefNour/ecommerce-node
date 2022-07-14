@@ -4,7 +4,7 @@
   "description": "a simple ecommerce app using node and ejs",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "set DEBUG=app, app:* & node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "debug": "set DEBUG=app, app:* & nodemon app.js"
   },
