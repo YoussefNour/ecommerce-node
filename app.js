@@ -40,4 +40,5 @@ app.use("/products", productsRouter);
 
 app.listen(port, () => {
   debug(`Server running on port ${chalk.green(port)}`);
+  console.log(`Server running on port ${chalk.green(port)}`);
 });
