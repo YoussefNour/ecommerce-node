@@ -10,7 +10,7 @@ const adminRouter = require("./src/routes/adminRouter");
 const productsRouter = require("./src/routes/productsRouter");
 
 const app = express();
-const port = process.env.port || 52511;
+const port = process.env.PORT || 52511;
 
 mongoose.connect('mongodb+srv://dba:yyIhvGNgjIvzRPb9@Eshopper.nhrxx.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true });
 const db = mongoose.connection;
