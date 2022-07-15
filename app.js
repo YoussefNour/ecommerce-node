@@ -12,11 +12,14 @@ const productsRouter = require("./src/routes/productsRouter");
 const app = express();
 const port = process.env.PORT || 52511;
 
-mongoose.connect('mongodb+srv://dba:yyIhvGNgjIvzRPb9@Eshopper.nhrxx.mongodb.net/Eshopper?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect(
+  "mongodb+srv://dba:yyIhvGNgjIvzRPb9@Eshopper.nhrxx.mongodb.net/Eshopper?retryWrites=true&w=majority",
+  { useNewUrlParser: true }
+);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
-  console.log("Connected successfully");
+  debug(chalk.green("Connected successfully"));
 });
 
 app.use("/public", express.static(path.join(__dirname, "public")));
@@ -40,5 +43,4 @@ app.use("/products", productsRouter);
 
 app.listen(port, () => {
   debug(`Server running on port ${chalk.green(port)}`);
-  console.log(`Server running on port ${chalk.green(port)}`);
 });
