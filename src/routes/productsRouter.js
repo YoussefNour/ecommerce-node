@@ -1,8 +1,6 @@
 const { response } = require("express");
 const express = require("express");
 const debug = require("debug")("app:productsRouter");
-// const productService = require("../services/productsServices");
-const productsController = require("../controller/products.controller");
 const product = require("../models/product");
 const productsRouter = express.Router();
 
